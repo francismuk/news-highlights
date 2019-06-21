@@ -12,7 +12,6 @@ def index():
 
 @app.route('/articles/<source_title>')
 def articles(source_title):
-
     '''
     View movie page function that returns the movie details page and its data
     '''
