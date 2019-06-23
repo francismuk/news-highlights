@@ -4,10 +4,10 @@ class Sources:
     '''
     def __init__(self,id, sources, category, language, country, url, name, title, description,urlToImage, publishedAt):
         self.id = id
-        self.sources = name
-        self.category = name
-        self.language = name
-        self.country = name
+        self.sources = sources
+        self.category = category
+        self.language = language
+        self.country = country
         self.url = url
         self.name = name
         self.title = title

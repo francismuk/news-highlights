@@ -1,19 +1,62 @@
+<!doctype html>
+{% extends 'base.html' %}
 {% import 'macros.html' as macro%}
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <!-- Popular movie section  -->
-    <h3> Popular Movies</h3>
-     <ul>
-        {% for sourceCategories in business %}
-            <li>{{ macro.displaySourcesList(business)}}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+
+<!---- Styles Block------>
+
+<!----Content Block----->
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <br>
+        <br>
+        <div class="col-md-12 heading">
+            <h1>Welcome to the Notable Events | Weather | Sports Exclusive</h1>
+        </div>
+    </div>
+    <div class="card">
+        <div class="row">
+            <div class="col-md-12 cat">
+                <h1>General News</h1>
+            </div>
+            {{macro.displaySourcesList(general)}}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12 cat">
+            <h1> Business </h1>
+        </div>
+         {{macro.sourceCategories(business)}}
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12 cat">
+             <h1> Entertainment </h1>
+        </div>
+         {{macro.sourceCategories(entertainment)}}
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12 cat">
+            <h1> Sports </h1>
+        </div>
+        {{macro.sourceCategories(sports)}}
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12 cat">
+            <h1> Technology </h1>
+        </div>
+         {{macro.sourceCategories(technology)}}
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12 cat">
+            <h1> Science </h1>
+        </div>
+        {{macro.sourceCategories(science)}}
+    </div>
+</div>
+{% endblock %}
