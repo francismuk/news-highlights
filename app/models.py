@@ -2,15 +2,19 @@ class Sources:
     '''
     Source class that define News objects
     '''
-    def __init__(self,id, name, title, description,urlToImage, publishedAt):
+    def __init__(self,id, sources, category, language, country, name, title, description,urlToImage, publishedAt):
         self.id = id
+        self.sources = name
+        self.category = name
+        self.language = name
+        self.country = name
         self.name = name
         self.title = title
         self.description = description
         self.urlToImage = urlToImage
         self.publishedAt = publishedAt
     
-class Aricles:
+class Articles:
     '''
     Class that defines articles
     '''
