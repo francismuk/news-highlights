@@ -7,8 +7,8 @@ class Config:
     EVERYTHING_SOURCE_BASE_URL = 'https://newsapi.org/v2/everything?sources={}&pageSize={}&apiKey={}'
     # NEWS_API_KEY='29cfe31df9fb475ebd6767b6b8ef74b4'
     
-    NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    NEWS_API_KEY = '29cfe31df9fb475ebd6767b6b8ef74b4'
+    SECRET_KEY = '1234'
 
 
 class ProdConfig(Config):
