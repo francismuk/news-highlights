@@ -9,11 +9,14 @@ from config import DevConfig
 api_key = None
 # Getting the movie base url
 base_url = None
+#Getting the articles url
+articles_url =None
 
 def configure_request(app):
-    global api_key,base_url
+    global api_key,base_url, articles_url
     api_key = app.config['NEWS_API_KEY']
     base_url = app.config['NEWS_API_BASE_URL']
+    articles_url = app.config['EVERYTHING_SOURCE_BASE_URL']
 
 def get_sources(category):
     '''
@@ -50,13 +53,15 @@ def process_sources(sources_list):
         category = sources_item.get('category')
         language = sources_item.get('language')
         country = sources_item.get('country')
+        url = sources_item.get('url')
         name = sources_item.get('name')
         title = sources_item.get('title')
         description = sources_item.get('description')
         urlToImage = sources_item.get('urlToImage')
         publishedAt = sources_item.get('publishedAt')
         
-        sources_object = Sources(id, sources, category, language, country, name, title, description, urlToImage, publishedAt)
-        sources_results.append(sources_object)
+        if url:
+            sources_object = Sources(id, sources, category, language, country, url, name, title, description, urlToImage, publishedAt)
+            sources_results.append(sources_object)
         
     return sources_results
