@@ -1,10 +1,10 @@
 from flask import render_template,request,redirect,url_for
-from app import app
-from ..requests import get_sources
+from . import main
+from ..requests import get_sources, get_articles
 from ..models import Sources
 
 # Views
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -17,11 +17,15 @@ def index():
     category_technology = get_sources('technology')
     category_science = get_sources('science')
     title = 'Welcome to the best News service'
+    
     return render_template('index.html', title=title, general=category_general, business=category_business, entertainment=category_entertainment, sports=category_sports, technology=category_technology, science=category_science)
 
-@app.route('/articles/<source_title>')
-def articles(source_title):
-    '''
-    View movie page function that returns the movie details page and its data
-    '''
-    return render_template('articles.html',title = source_title)
+
+@main.route('/articles/<source_id>&<int:per_page>')
+def articles(source_id, per_page):
+    """
+    View source page function that returns the news details page in addition to its data.
+    """
+    news_source = get_articles(source_id, per_page)
+    title = f'Welcome to {source_id}'
+    return render_template('articles.html', title=title, name = source_id, news = news_source)

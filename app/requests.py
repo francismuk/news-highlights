@@ -1,9 +1,6 @@
-from app import app
 import urllib.request,json
-from models import Sources, Articles
+from .models import Sources, Articles
 from config import DevConfig
-
-
 
 # Getting api key
 api_key = None
@@ -49,19 +46,52 @@ def process_sources(sources_list):
     '''
     sources_results = []
     for sources_item in sources_list:
-        sources = sources_item.get('sources')
         category = sources_item.get('category')
         language = sources_item.get('language')
         country = sources_item.get('country')
         url = sources_item.get('url')
         name = sources_item.get('name')
-        title = sources_item.get('title')
         description = sources_item.get('description')
-        urlToImage = sources_item.get('urlToImage')
-        publishedAt = sources_item.get('publishedAt')
         
         if url:
-            sources_object = Sources(id, sources, category, language, country, url, name, title, description, urlToImage, publishedAt)
+            sources_object = Sources(id, name, description, url, category, language, country)
             sources_results.append(sources_object)
         
     return sources_results
+
+def get_articles(source_id, limit):
+    '''
+    Function that gets articles based on the source id
+    '''
+    get_article_location_url = articles_url.format(source_id, limit, api_key)
+
+    with urllib.request.urlopen(get_article_location_url) as url:
+        articles_location_data = url.read()
+        articles_location_response = json.loads(articles_location_data)
+
+        articles_location_results = None
+
+        if articles_location_response['articles']:
+            articles_location_results = process_articles(articles_location_response['articles'])
+
+    return articles_location_results
+
+
+def process_articles(my_articles):
+    '''
+    Function that processes the json results for the articles
+    '''
+    article_location_list = []
+
+    for article in my_articles:
+        author = article.get('author')
+        title = article.get('title')
+        description = article.get('description')
+        url = article.get('url')
+        urlToImage = article.get('urlToImage')
+
+        if url:
+            article_source_object = Articles(author, title, description, url, urlToImage)
+            article_location_list.append(article_source_object)
+
+    return article_location_list
