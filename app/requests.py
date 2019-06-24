@@ -1,6 +1,6 @@
-import urllib.request, json  # urllib.request will help us create a connection to the API URL and send a request.
+import urllib.request
+import json  # urllib.request will help us create a connection to the API URL and send a request.
 from .models import Source, Articles
-from datetime import datetime
 
 
 # Getting the api key
@@ -92,11 +92,7 @@ def process_articles(my_articles):
         description = article.get('description')
         url = article.get('url')
         urlToImage = article.get('urlToImage')
-        date_published = article.get('publishedAt')
-
-        publishedAt = datetime(year=int(date_published[0:4]), month=int(date_published[5:7]),
-                               day=int(date_published[8:10]), hour=int(date_published[11:13]),
-                               minute=int(date_published[14:16]))
+        publishedAt = article.get('publishedAt')
 
         if urlToImage:
             article_source_object = Articles(author, title, description, url, urlToImage, publishedAt)

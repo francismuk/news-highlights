@@ -1,13 +1,30 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        {% if title %} <!--if statement-control block. These are used to declare functions, if statements and loops-->
-        <title> {{ title }} </title>
-        {% else %}
-        <title> Welcome to {Source_id} </title>
-        {% endif %}
-    </head>
-    <body>
-
-    </body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <br>
+    <br>
+    <div class="card">
+        <div class="card-heading">
+            <h1> {{name}} </h1>
+        </div>
+    </div>
+    <div class="card-body">
+        {% for article in news %}
+        <div class="col-md-3 detail">
+            <a href={{article.url}} target="_blank">
+                <img src={{article.urlToImage}} alt="Article Image" width="300" height="200">
+            </a>
+            <div class="words">
+                <h4 class="text-bold"> {{article.title}} </h4>
+                <p class="small">- {{article.author}} </p>
+                <p class="small">Posted on {{article.publishedAt}}</p>
+                <hr>
+                <p> {{article.description}}...
+                    <a href={{article.url}} target="_blank">Read More</a>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock%}

@@ -12,17 +12,17 @@ def index():
      is that returns the index page and the data
     """
     # Getting the popular categories
-    category_general = get_sources('general')
-    category_business = get_sources('business')
-    category_entertainment = get_sources('entertainment')
-    category_sports = get_sources('sports')
-    category_technology = get_sources('technology')
-    category_science = get_sources('science')
-
+    sources_general = get_sources('general')
+    sources_business = get_sources('business')
+    sources_entertainment = get_sources('entertainment')
+    sources_sports = get_sources('sports')
+    sources_technology = get_sources('technology')
+    sources_science = get_sources('science')
 
     title = 'Welcome to the Best News Website'
 
-    return render_template('index.html', title=title, general=category_general, business=category_business, entertainment=category_entertainment, sports=category_sports, technology=category_technology, science=category_science) # first variable represents variable in template while the other represents the one in the view
+    return render_template('index.html', title=title, general=sources_general, business=sources_business, entertainment=sources_entertainment, sports=sources_sports, technology=sources_technology, science=sources_science) # first variable represents variable in template while the other represents the one in the view
+
 
 @main.route('/articles/<source_id>&<int:per_page>')
 def articles(source_id, per_page):
