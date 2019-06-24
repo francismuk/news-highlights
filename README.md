@@ -39,4 +39,4 @@ A user will have to click on the link provided on a specific source to view arti
 
 ### [License](LICENSE)
 MIT LIcense
-Copyright (c) Francis Mukuha
+Copyright (c) Francis Mukuha W
