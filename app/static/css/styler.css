@@ -1,9 +1,10 @@
 h1{
     font-family: 'Bad Script';
-    color: white;
+    background-color: floralwhite;
 }
 p{
     font-family: 'Bad Script';
+    color: crimson;
 }
 body {
     background-image: url("https://cdn.pixabay.com/photo/2018/06/21/16/32/newspapers-3488861_960_720.jpg");
