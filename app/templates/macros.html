@@ -1,19 +1,19 @@
-{% macro displaySourcesList(sources_list) %}
-    {% for sources_item in sources_list %}
-    <div class="col-md-3">
-        <div class="card articles">
-            <div class="card-header">
-                <h3> {{sources_item.name}} </h3>
-            </div>
-            <hr>
-            <div class="card-body">
-                <p> {{sources_item.description|truncate(100)}}
-                <br>
-                <a href="/articles/{{category.id}}&40">Read Articles</a>
-                </p>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
 
+{% macro sourceCategories(categories) %}
+{% for category in categories %}
+<div class="col-md-3">
+<div class="card articles">
+    <div class="card-header">
+        <h3> {{category.name}} </h3>
+    </div>
+    <hr>
+    <div class="card-body">
+        <p> {{category.description|truncate(100)}}
+        <br>
+        <a href="/articles/{{category.id}}&40">Read Articles</a>
+        </p>
+    </div>
+</div>
+</div>
+{% endfor %}
 {% endmacro %}
