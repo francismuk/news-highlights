@@ -38,4 +38,5 @@ A user will have to click on the link provided on a specific source to view arti
     - CSS
 
 ### [License](LICENSE)
+MIT LIcense
 Copyright (c) Francis Mukuha
